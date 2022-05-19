@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import "./Home.css";
 
 const initialFormValues = {
   first_name: "",
@@ -114,47 +115,71 @@ export default function EditPlayer(props) {
   };
 
   return (
-    <div>
-      <h2>
+    <div className="edit-player">
+      <h2 className="name">
         {formValues.first_name} {formValues.last_initial}
       </h2>
-      <h2>Defense: {formValues.defense}</h2>
-      <button
-        onClick={decrementDefense}
-        value={formValues.defense}
-        onChange={onChange}
-      >-1</button>
-      <button
-        onClick={incrementDefense}
-        value={formValues.defense}
-        onChange={onChange}
-      >+1</button>
-      <h2>Assists: {formValues.assists}</h2>
-      <button
-        onClick={decrementAssists}
-        value={formValues.assists}
-        onChange={onChange}
-      >-1</button>
-      <button
-        onClick={incrementAssists}
-        value={formValues.assists}
-        onChange={onChange}
-      >+1</button>
-      <h2>Points: {formValues.points}</h2>
-      <button
-        onClick={decrementPoints}
-        value={formValues.points}
-        onChange={onChange}
-      >-1</button>
-      <button
-        onClick={incrementPoints}
-        value={formValues.points}
-        onChange={onChange}
-      >
-        +1
-      </button>
-      <br/>
-      <br/>
+      <div className="stat-container">
+        <div className="defense">
+          <h2 className="edit-stats">Defense: {formValues.defense}</h2>
+          <button
+            className="red-button-edit"
+            onClick={decrementDefense}
+            value={formValues.defense}
+            onChange={onChange}
+          >
+            -1
+          </button>
+          <button
+            className="button-edit"
+            onClick={incrementDefense}
+            value={formValues.defense}
+            onChange={onChange}
+          >
+            +1
+          </button>
+        </div>
+        <div className="assists">
+          <h2 className="edit-stats">Assists: {formValues.assists}</h2>
+          <button
+            className="red-button-edit"
+            onClick={decrementAssists}
+            value={formValues.assists}
+            onChange={onChange}
+          >
+            -1
+          </button>
+          <button
+            className="button-edit"
+            onClick={incrementAssists}
+            value={formValues.assists}
+            onChange={onChange}
+          >
+            +1
+          </button>
+        </div>
+        <div className="points">
+          <h2 className="edit-stats">Points: {formValues.points}</h2>
+          <button
+            className="red-button-edit"
+            onClick={decrementPoints}
+            value={formValues.points}
+            onChange={onChange}
+          >
+            -1
+          </button>
+          <button
+            className="button-edit"
+            onClick={incrementPoints}
+            value={formValues.points}
+            onChange={onChange}
+          >
+            +1
+          </button>
+        </div>
+      </div>
+      <br />
+      <br />
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );

@@ -1,0 +1,101 @@
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.team-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+button{
+    background-color: #ffffff; 
+    color: black;
+    font-size: 24px;
+    transition-duration: 0.4s;
+    width: 200px;
+    height: 50px;
+    float: left;
+    border: 3px solid green;
+    border-radius: 8px;
+}
+
+.red-button{
+    border: 3px solid red
+}
+.red-button-edit{
+    border: 3px solid red;
+    width: 75px;
+}
+
+.button-edit{
+    width: 75px;
+}
+
+button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+.red-button:hover {
+    background-color: red; /* Green */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+.red-button-edit:hover {
+    background-color: red; /* Green */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+.player-wrapper{
+    width: 150px;
+    padding: 50px;
+    margin: 15px;
+    border: black solid 3px;
+    border-radius: 25px;
+}
+.player-name{
+    color: green;
+    text-decoration: none;
+}
+
+.box-container{
+    border: rgb(255, 3, 3), 1px, solid;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 50px;
+}
+
+.counter{
+    font-weight: 900;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.name{
+    font-size: 50px;
+}
+
+.edit-stats{
+    font-size: 30px;
+    padding: 8px;
+}
+
+.stat-container{
+}
+
+.edit-player{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}

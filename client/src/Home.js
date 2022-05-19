@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Player from "./Player";
+import "./Home.css";
 
 function Home() {
   const [players, setPlayers] = useState([]);
@@ -31,20 +32,22 @@ function Home() {
   return (
     <div>
       <header>
-        <h1>Frisbee tracker</h1>
+        <h1 className="title">Frisbee tracker</h1>
         <br></br>
         <br />
-        <div>
-          <h2>Riverton B</h2>
-          <button onClick={incrementCounter}>+1</button>
-          <h1>{counter}</h1>
-          <button onClick={decrementCounter}>-1</button>
-        </div>
-        <div>
-          <h2>Opposing Team</h2>
-          <button onClick={incrementCounterOpposing}>+1</button>
-          <h1>{counterOpposing}</h1>
-          <button onClick={decrementCounterOpposing}>-1</button>
+        <div className="team-container">
+          <div>
+            <h2>Riverton B</h2>
+            <h1 className="counter">{counter}</h1>
+            <button className="red-button" onClick={decrementCounter}>-1</button>
+            <button onClick={incrementCounter}>+1</button>
+          </div>
+          <div>
+            <h2>Opposing Team</h2>
+            <h1 className="counter">{counterOpposing}</h1>
+            <button className='red-button' onClick={decrementCounterOpposing}>-1</button>
+            <button onClick={incrementCounterOpposing}>+1</button>
+          </div>
         </div>
         <Player allPlayers={players} />
       </header>
