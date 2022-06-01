@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node_modules/next/dist/bin/next start -p $PORT",
+    "start": "node ./bin/www",
     "server": "nodemon ./bin/www",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
