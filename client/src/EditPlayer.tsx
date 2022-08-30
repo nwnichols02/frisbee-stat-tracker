@@ -13,14 +13,23 @@ const initialFormValues = {
   points: 0,
 };
 
-export default function EditPlayer(props) {
+interface IinitialFormValues {
+  first_name: string,
+  last_initial: string,
+  defense: number,
+  assists: number,
+  points: number,
+  player_id: number,
+}
+
+export default function EditPlayer() {
   const navigate = useNavigate();
   const homeRoute = () => {
     navigate("/");
   };
   let params = useParams();
   const [formValues, setFormValues] = useState(initialFormValues);
-  const getPlayerById = (id) => {
+  const getPlayerById = (id: number |string | undefined) => {
     axios
       .get(`http://localhost:9000/api/players/${id}`)
       .then((res) => {
@@ -32,6 +41,7 @@ export default function EditPlayer(props) {
 
   useEffect(() => {
     let id = params.id;
+    console.log(params.id)
     getPlayerById(id);
   }, []);
 
@@ -44,8 +54,8 @@ export default function EditPlayer(props) {
     console.log("newtotal" + newTotal);
     axios
       .put(`http://localhost:9000/api/players/${params.id}`, newTotal)
-      .then((res) => {
-        setFormValues([res.data]);
+      .then((res: any) => {
+        setFormValues(res.data);
         console.log(res.data);
       })
 
@@ -56,16 +66,17 @@ export default function EditPlayer(props) {
       .catch((err) => console.log(err));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: any) => {
+    console.log(e)
     e.preventDefault();
     handleSubmit();
   };
 
-  const updateForm = (name, value) => {
+  const updateForm = (name: string, value: string | number) => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const onChange = (evt) => {
+  const onChange = (evt: any) => {
     const name = evt.target.name;
     const value = evt.target.value;
     updateForm(name, value);

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Home';
 import {Route, Routes} from 'react-router-dom';
@@ -10,7 +9,7 @@ function App() {
       <header>
         <Routes>
           <Route path='/:id' element={<EditPlayer/>}></Route>
-          <Route exact path='/' element={<Home/>}></Route>
+          <Route path='/' element={<Home/>}></Route>
         </Routes>
       </header>
     </div>
