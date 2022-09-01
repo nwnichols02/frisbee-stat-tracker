@@ -2,6 +2,18 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Player from "./Player";
 import "./Home.css";
+import { Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
+import { NavbarBrand } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BsPeopleFill } from "react-icons/bs";
+import { BsFillGearFill } from "react-icons/bs";
+import { Card, CardGroup } from "react-bootstrap";
+import { Image } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import Navigationbar from './Navigationbar';
 
 function Home() {
   const [players, setPlayers] = useState([]);
@@ -31,26 +43,55 @@ function Home() {
   }, []);
   return (
     <div>
-      <header>
-        <h1 className="title">Frisbee tracker</h1>
-        <br></br>
-        <br />
-        <div className="team-container">
-          <div>
-            <h2>Riverton B</h2>
-            <h1 className="counter">{counter}</h1>
-            <button className="red-button" onClick={decrementCounter}>-1</button>
-            <button onClick={incrementCounter}>+1</button>
-          </div>
-          <div>
-            <h2>Opposing Team</h2>
-            <h1 className="counter">{counterOpposing}</h1>
-            <button className='red-button' onClick={decrementCounterOpposing}>-1</button>
-            <button onClick={incrementCounterOpposing}>+1</button>
-          </div>
-        </div>
+      <Navigationbar />
+      <Container>
+        <Row xs={1} sm={1} md={1}>
+          <Col className="mt-5">
+            <CardGroup>
+            <Card className="mt-5 text-center">
+              <Card.Body>
+                <Card.Title>Riverton Black </Card.Title>
+                <Card.Text>
+                  <h1 className="counter">{counter}</h1>
+                  <Button variant="danger" onClick={decrementCounter}>
+                    -1
+                  </Button>
+                  <Button
+                    variant="success"
+                    onClick={incrementCounter}
+                    className="ms-5"
+                  >
+                    +1
+                  </Button>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          {/* </Col> */}
+          {/* <Col className="mt-5"> */}
+            <Card className="mt-5 text-center xs-mt-1">
+              <Card.Body>
+                <Card.Title>Opposing Team</Card.Title>
+                <Card.Text>
+                  <h1 className="counter">{counterOpposing}</h1>
+                  <Button
+                    variant="danger"
+                    className=""
+                    onClick={decrementCounterOpposing}
+                  >
+                    -1
+                  </Button>
+                  <Button variant="success" onClick={incrementCounterOpposing}
+                  className="ms-5">
+                    +1
+                  </Button>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+                    </CardGroup>
+          </Col>
+        </Row>
         <Player allPlayers={players} />
-      </header>
+      </Container>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import "./Home.css";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import Navigationbar from "./Navigationbar";
 
 const initialFormValues = {
   first_name: "",
@@ -29,7 +31,7 @@ export default function EditPlayer() {
   };
   let params = useParams();
   const [formValues, setFormValues] = useState(initialFormValues);
-  const getPlayerById = (id: number |string | undefined) => {
+  const getPlayerById = (id: number | string | undefined) => {
     axios
       .get(`http://localhost:9000/api/players/${id}`)
       .then((res) => {
@@ -126,72 +128,82 @@ export default function EditPlayer() {
   };
 
   return (
-    <div className="edit-player">
-      <h2 className="name">
-        {formValues.first_name} {formValues.last_initial}
-      </h2>
-      <div className="stat-container">
-        <div className="defense">
-          <h2 className="edit-stats">Defense: {formValues.defense}</h2>
-          <button
-            className="red-button-edit"
-            onClick={decrementDefense}
-            value={formValues.defense}
-            onChange={onChange}
-          >
-            -1
-          </button>
-          <button
-            className="button-edit"
-            onClick={incrementDefense}
-            value={formValues.defense}
-            onChange={onChange}
-          >
-            +1
-          </button>
-        </div>
-        <div className="assists">
-          <h2 className="edit-stats">Assists: {formValues.assists}</h2>
-          <button
-            className="red-button-edit"
-            onClick={decrementAssists}
-            value={formValues.assists}
-            onChange={onChange}
-          >
-            -1
-          </button>
-          <button
-            className="button-edit"
-            onClick={incrementAssists}
-            value={formValues.assists}
-            onChange={onChange}
-          >
-            +1
-          </button>
-        </div>
-        <div className="points">
-          <h2 className="edit-stats">Points: {formValues.points}</h2>
-          <button
-            className="red-button-edit"
-            onClick={decrementPoints}
-            value={formValues.points}
-            onChange={onChange}
-          >
-            -1
-          </button>
-          <button
-            className="button-edit"
-            onClick={incrementPoints}
-            value={formValues.points}
-            onChange={onChange}
-          >
-            +1
-          </button>
-        </div>
-      </div>
-      <br />
-      <br />
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
+    <Container>
+      <Navigationbar />
+      <Row className="text-center">
+        <Col className="mt-5">
+          <Card className="mt-5">
+            <Card.Body>
+              <Card.Title>
+                <h1>
+
+                  {formValues.first_name} {formValues.last_initial}
+                </h1>
+              </Card.Title>
+              <Card.Text>
+                <div className="defense mt-3">
+                  <h5 className="edit-stats">Defense: {formValues.defense}</h5>
+                  <Button
+                    className="btn-danger"
+                    onClick={decrementDefense}
+                    value={formValues.defense}
+                    onChange={onChange}
+                  >
+                    -1
+                  </Button>
+                  <Button
+                    className="btn-success ms-5"
+                    onClick={incrementDefense}
+                    value={formValues.defense}
+                    onChange={onChange}
+                  >
+                    +1
+                  </Button>
+                </div>
+                <div className="assists mt-5">
+                  <h5 className="edit-stats">Assists: {formValues.assists}</h5>
+                  <Button
+                    className="btn-danger"
+                    onClick={decrementAssists}
+                    value={formValues.assists}
+                    onChange={onChange}
+                  >
+                    -1
+                  </Button>
+                  <Button
+                    className="btn-success ms-5"
+                    onClick={incrementAssists}
+                    value={formValues.assists}
+                    onChange={onChange}
+                  >
+                    +1
+                  </Button>
+                </div>
+                <div className="points mt-5">
+                  <h5 className="edit-stats">Points: {formValues.points}</h5>
+                  <Button
+                    className="btn-danger"
+                    onClick={decrementPoints}
+                    value={formValues.points}
+                    onChange={onChange}
+                  >
+                    -1
+                  </Button>
+                  <Button
+                    className="btn-success ms-5"
+                    onClick={incrementPoints}
+                    value={formValues.points}
+                    onChange={onChange}
+                  >
+                    +1
+                  </Button>
+                </div>
+                <Button onClick={handleSubmit} className="btn-success mt-5">Submit</Button>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
